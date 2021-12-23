@@ -29,15 +29,16 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: [
             SizedBox(
-              height: height / 10,
+              height: height / 20,
             ),
             Text(
               "How You",
               style: TextStyle(
-                  fontFamily: authenia,
-                  fontSize: 108,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w300),
+                fontFamily: authenia,
+                fontSize: 108,
+                color: Colors.black,
+                fontWeight: FontWeight.w300,
+              ),
             ),
             Text(
               "Doin!",
@@ -80,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(top: 18.0, bottom: 30),
               child: GestureDetector(
                 onTap: () => Get.snackbar(
-                    "Under Construcion", "This page is under construction"),
+                  "Under Construcion",
+                  "This page is under construction"),
                 child: Text(
                   "Forgot Password",
                   textAlign: TextAlign.end,

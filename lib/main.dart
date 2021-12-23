@@ -1,25 +1,43 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:how_you_doin/Utils/theme.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'googlefirst.dart';
 
-import 'Screens/LoginPages/homescreen.dart';
-
-Future main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
-  runApp(
-    GetMaterialApp(
-      theme: ThemeData(
-        textTheme: TextTheme(
-          bodyText1: TextStyle(fontFamily: library, letterSpacing: 3),
-          bodyText2: TextStyle(fontFamily: lemonMilk, letterSpacing: 3),
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Colors.indigo[900],
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-    ),
-  );
+        debugShowCheckedModeBanner: false,
+        home: HomePage());
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool _isLoggedIn = false;
+  GoogleSignInAccount? _userObj;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: firstpage(),
+    );
+  }
 }
