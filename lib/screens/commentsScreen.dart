@@ -51,6 +51,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
     final User user = Provider.of<UserProvider>(context).getUser;
 
     return Scaffold(
+      backgroundColor: mobileBackgroundColor,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -112,6 +113,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                     controller: commentEditingController,
                     decoration: InputDecoration(
                       hintText: 'Comment as ${user.username}',
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                      ),
                       border: InputBorder.none,
                     ),
                   ),
@@ -128,7 +132,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   child: Text(
                     'Post',
                     style: TextStyle(
-                      color: Colors.blue.shade700,
+                      color: green,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

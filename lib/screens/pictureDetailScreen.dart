@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:howyoudoin/models/user.dart' as model;
@@ -116,18 +117,21 @@ class _PictureDetailsState extends State<PictureDetails> {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5.0),
-                        child: CachedNetworkImage(
-                          imageUrl: widget.snap['profImage'].toString(),
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Center(
-                            child: SizedBox(
-                              width: 10.0,
-                              height: 10.0,
-                              child: new CircularProgressIndicator(),
+                        child: Hero(
+                          tag: widget.snap['profImage'].toString(),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.snap['profImage'].toString(),
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                              child: SizedBox(
+                                width: 10.0,
+                                height: 10.0,
+                                child: new CircularProgressIndicator(),
+                              ),
                             ),
+                            errorWidget: (context, url, error) =>
+                                new Icon(Icons.error),
                           ),
-                          errorWidget: (context, url, error) =>
-                              new Icon(Icons.error),
                         ),
                       ),
                     ),
@@ -234,7 +238,7 @@ class _PictureDetailsState extends State<PictureDetails> {
                     child: LikeAnimation(
                       isAnimating: isLikeAnimating,
                       child: Icon(
-                        Icons.favorite,
+                        CupertinoIcons.hand_thumbsup,
                         color: Colors.white,
                         size: 100,
                       ),
@@ -259,19 +263,20 @@ class _PictureDetailsState extends State<PictureDetails> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Row(
-                  children: [
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
                     LikeAnimation(
                       isAnimating: widget.snap['likes'].contains(user.uid),
                       smallLike: true,
                       child: IconButton(
                         icon: widget.snap['likes'].contains(user.uid)
                             ? Icon(
-                                Icons.favorite,
-                                color: Colors.red,
+                                CupertinoIcons.hand_thumbsup_fill,
+                                color: green,
                               )
                             : Icon(
-                                Icons.favorite_border,
-                                color: green,
+                                CupertinoIcons.hand_thumbsup_fill,
+                                color: textColor,
                               ),
                         onPressed: () => FireStoreMethods().likePost(
                           widget.snap['postId'].toString(),
@@ -283,7 +288,7 @@ class _PictureDetailsState extends State<PictureDetails> {
                     IconButton(
                       icon: Icon(
                         Icons.comment_outlined,
-                        color: green,
+                        color: textColor,
                       ),
                       onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(

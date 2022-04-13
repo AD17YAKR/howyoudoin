@@ -3,18 +3,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:howyoudoin/providers/user_provider.dart';
 import 'package:howyoudoin/responsive/mobileScreenLayout.dart';
 import 'package:howyoudoin/responsive/responsiveLayout.dart';
 import 'package:howyoudoin/responsive/webScreenLayout.dart';
-import 'package:howyoudoin/screens/addPostScreen.dart';
 import 'package:howyoudoin/screens/loginScreen.dart';
 import 'package:howyoudoin/utils/colors.dart';
 import 'package:howyoudoin/widgets/loaders.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/profileScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

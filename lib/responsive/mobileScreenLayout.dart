@@ -1,8 +1,8 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:howyoudoin/screens/addPostScreen.dart';
-import 'package:howyoudoin/screens/chatScreen.dart';
 import 'package:howyoudoin/screens/feedScreen.dart';
 import 'package:howyoudoin/screens/profileScreen.dart';
 import 'package:howyoudoin/screens/searchScreen.dart';
@@ -17,7 +17,6 @@ class MobileScreenLayout extends StatefulWidget {
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   List<Widget> homeScreenItems = [
-    ChatScreen(),
     FeedScreen(),
     SearchScreen(),
     AddPostScreen(),
@@ -47,7 +46,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   }
 
   void navigationTapped(int page) {
-    //Animating Page
     pageController.jumpToPage(page);
   }
 
@@ -59,55 +57,38 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         controller: pageController,
         onPageChanged: onPageChanged,
       ),
-      bottomNavigationBar: Container(
-        height: 57,
-        // padding: EdgeInsets.only(top: 10),
-        child: CupertinoTabBar(
-          backgroundColor: mobileBackgroundColor,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: (_page == 0) ? primaryColor : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                color: (_page == 1) ? primaryColor : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.message,
-                color: (_page == 2) ? primaryColor : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.add_circle,
-                  color: (_page == 3) ? primaryColor : secondaryColor,
+      bottomNavigationBar: CurvedNavigationBar(
+        index: _page,
+        animationDuration: const Duration(milliseconds: 300),
+        height: 55,
+        buttonBackgroundColor: green,
+        backgroundColor: mobileBackgroundColor.withGreen(85),
+        color: mobileBackgroundColor.withRed(1),
+        items: <Widget>[
+          Icon(
+            _page == 0 ? CupertinoIcons.home : CupertinoIcons.home,
+            size: 26,
+            color: _page == 0 ? Colors.white : green,
+          ),
+          Icon(
+            _page == 1 ? Icons.search : CupertinoIcons.search,
+            size: 26,
+            color: _page == 1 ? Colors.white : green,
+          ),
+          _page == 2
+              ? Icon(Icons.add_a_photo, size: 26, color: Colors.white)
+              : Icon(
+                  Icons.add_a_photo_outlined,
+                  size: 26,
+                  color: green,
                 ),
-                label: '',
-                backgroundColor: primaryColor),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: (_page == 4) ? primaryColor : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: primaryColor,
-            ),
-          ],
-          onTap: navigationTapped,
-          currentIndex: _page,
-        ),
+          Icon(
+            _page == 3 ? Icons.person : Icons.person_outline,
+            size: 26,
+            color: _page == 3 ? Colors.white : green,
+          ),
+        ],
+        onTap: navigationTapped,
       ),
     );
   }

@@ -11,7 +11,7 @@ Widget ButtonLoader(double size) {
 
 Widget ScreenLoader() {
   return LoadingAnimationWidget.threeArchedCircle(
-    color: green,
+    color: neon,
     size: 40,
   );
 }

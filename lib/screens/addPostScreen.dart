@@ -115,6 +115,17 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
     return _file == null
         ? Scaffold(
+            appBar: AppBar(
+              title: Text(
+                "Add Your Post",
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300
+                ),
+              ),
+              backgroundColor: mobileBackgroundColor,
+            ),
             backgroundColor: mobileBackgroundColor,
             body: Center(
               child: IconButton(
@@ -174,7 +185,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: TextField(
-                        style: TextStyle(color: textColor) ,
+                        style: TextStyle(color: textColor),
                         controller: _descriptionController,
                         decoration: InputDecoration(
                             hintText: "Write a caption...",

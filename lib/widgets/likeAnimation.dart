@@ -37,18 +37,17 @@ class _LikeAnimationState extends State<LikeAnimation>
   @override
   void didUpdateWidget(covariant LikeAnimation oldWidget) {
     super.didUpdateWidget(oldWidget);
-
     if (widget.isAnimating != oldWidget.isAnimating) {
       startAnimation();
     }
   }
-
+  
   startAnimation() async {
     if (widget.isAnimating || widget.smallLike) {
       await controller.forward();
       await controller.reverse();
       await Future.delayed(
-        const Duration(milliseconds: 200),
+        const Duration(milliseconds: 225),
       );
 
       if (widget.onEnd != null) {

@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:cropperx/cropperx.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
+  final _cropperKey = GlobalKey(debugLabel: 'cropperKey');
   bool _isLoading = false;
   Uint8List? _image;
   bool isObscured = true;

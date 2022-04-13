@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:howyoudoin/models/user.dart' as model;
@@ -103,23 +104,26 @@ class _PostCardState extends State<PostCard> {
                     width: 50,
                     height: 32,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(340.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       color: Colors.grey,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(340.0),
-                      child: CachedNetworkImage(
-                        imageUrl: widget.snap['profImage'].toString(),
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => Center(
-                          child: SizedBox(
-                            width: 10.0,
-                            height: 10.0,
-                            child: new CircularProgressIndicator(),
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Hero(
+                        tag: widget.snap['profImage'].toString(),
+                        child: CachedNetworkImage(
+                          imageUrl: widget.snap['profImage'].toString(),
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => Center(
+                            child: SizedBox(
+                              width: 10.0,
+                              height: 10.0,
+                              child: new CircularProgressIndicator(),
+                            ),
                           ),
+                          errorWidget: (context, url, error) =>
+                              new Icon(Icons.error),
                         ),
-                        errorWidget: (context, url, error) =>
-                            new Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -186,7 +190,10 @@ class _PostCardState extends State<PostCard> {
                               },
                             );
                           },
-                          icon: Icon(Icons.more_vert),
+                          icon: Icon(
+                            Icons.more_vert,
+                            color: Colors.white,
+                          ),
                         )
                       : Container(),
                 ],
@@ -225,7 +232,7 @@ class _PostCardState extends State<PostCard> {
                   child: LikeAnimation(
                     isAnimating: isLikeAnimating,
                     child: Icon(
-                      Icons.favorite,
+                      CupertinoIcons.hand_thumbsup,
                       color: Colors.white,
                       size: 100,
                     ),
@@ -254,11 +261,11 @@ class _PostCardState extends State<PostCard> {
                 child: IconButton(
                   icon: widget.snap['likes'].contains(user.uid)
                       ? Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                          CupertinoIcons.hand_thumbsup_fill,
+                          color: green,
                         )
                       : Icon(
-                          Icons.favorite_border,
+                          CupertinoIcons.hand_thumbsup_fill,
                           color: textColor,
                         ),
                   onPressed: () => FireStoreMethods().likePost(
@@ -268,7 +275,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                 ),
               ),
-              IconButton(
+              /*  IconButton(
                 icon: Icon(
                   Icons.comment_outlined,
                   color: textColor,
@@ -279,6 +286,19 @@ class _PostCardState extends State<PostCard> {
                       postId: widget.snap['postId'].toString(),
                     ),
                   ),
+                ),
+              ), */
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Container(
+                  child: Text(
+                    DateFormat.yMMMd()
+                        .format(widget.snap['datePublished'].toDate()),
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 4),
                 ),
               ),
             ],
@@ -291,16 +311,17 @@ class _PostCardState extends State<PostCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 DefaultTextStyle(
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontWeight: FontWeight.w800),
-                    child: Text(
-                      '${widget.snap['likes'].length} likes',
-                      style: TextStyle(
-                        color: textColor,
-                      ),
-                    )),
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2!
+                      .copyWith(fontWeight: FontWeight.w800),
+                  child: Text(
+                    '${widget.snap['likes'].length} likes',
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
+                ),
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.only(
@@ -341,16 +362,6 @@ class _PostCardState extends State<PostCard> {
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  child: Text(
-                    DateFormat.yMMMd()
-                        .format(widget.snap['datePublished'].toDate()),
-                    style: TextStyle(
-                      color: textColor,
-                    ),
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 4),
                 ),
               ],
             ),

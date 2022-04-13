@@ -234,7 +234,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     .instance.currentUser!.uid,
                                                 userData['uid'],
                                               );
-
                                               setState(() {
                                                 isFollowing = false;
                                                 followers--;
@@ -347,32 +346,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   GestureDetector(
                                       onTap: () {},
                                       child:
-                                          buildStatRow(followers, "Trackers")),
+                                          buildStatRow(followers, "Followers")),
                                   GestureDetector(
                                       onTap: () {},
                                       child:
-                                          buildStatRow(following, "Tracking")),
+                                          buildStatRow(following, "Following")),
                                 ],
                               ),
                             ),
                             SizedBox(
                               height: 15,
                             ),
-                            /* FollowButtonPlaceHolder(
-                                    text: 'Sign Out',
-                                    backgroundColor: mobileBackgroundColor,
-                                    textColor: primaryColor,
-                                    borderColor: Colors.grey,
-                                    function: () async {
-                                      await AuthMethods().signOut();
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              LoginScreen(),
-                                        ),
-                                      );
-                                    },
-                                  ) */
                           ],
                         ),
                       ],
@@ -387,6 +371,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         .where('uid', isEqualTo: widget.uid)
                         .get(),
                     builder: (context, snapshot) {
+                      
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Center(
                           child: ScreenLoader(),
