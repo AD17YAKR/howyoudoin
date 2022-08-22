@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "969774606778",
+    "project_id": "howyoudoin-b14d0",
+    "storage_bucket": "howyoudoin-b14d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969774606778:android:63b396650bb370c59e1583",
+        "android_client_info": {
+          "package_name": "com.example.howyoudoin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969774606778-g8hn8v57mg1r9airqt9m0f659v3a946l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.howyoudoin",
+            "certificate_hash": "8b2d7605b816dd74af95bd26274d19ee922328d0"
+          }
+        },
+        {
+          "client_id": "969774606778-pjjdhkh42gcb4gr3tl2cka920kbsec4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeOIwRx8WFG29CYjIW4tGK2tlasTxQsbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969774606778-pjjdhkh42gcb4gr3tl2cka920kbsec4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

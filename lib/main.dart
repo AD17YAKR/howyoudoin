@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -16,7 +17,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     await Firebase.initializeApp(
-      
       options: FirebaseOptions(
           apiKey: "AIzaSyDq6raC0VKUiTwAVFN2uKwkrBD-1EgP9s0",
           authDomain: "howyoudoin-b14d0.firebaseapp.com",
@@ -27,6 +27,8 @@ void main() async {
     );
   } else {
     await Firebase.initializeApp();
+    await FirebaseFirestore.instance.disableNetwork();
+    await FirebaseFirestore.instance.enableNetwork();
   }
   runApp(MyApp());
 }
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        title: 'Instagram Clone',
+        title: 'How You Doin',
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
@@ -64,7 +66,7 @@ class MyApp extends StatelessWidget {
               // Checking if the snapshot has any data or not
               if (snapshot.hasData) {
                 // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
-                return /*  AddPostScreen(); */ ResponsiveLayout(
+                return ResponsiveLayout(
                   mobileScreenLayout: MobileScreenLayout(),
                   webScreenLayout: WebScreenLayout(),
                 );
