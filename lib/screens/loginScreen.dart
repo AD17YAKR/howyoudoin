@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:howyoudoin/resources/auth_methods.dart';
 import 'package:howyoudoin/responsive/mobileScreenLayout.dart';
 import 'package:howyoudoin/responsive/responsiveLayout.dart';
@@ -10,7 +9,6 @@ import 'package:howyoudoin/screens/signupScreen.dart';
 import 'package:howyoudoin/utils/colors.dart';
 import 'package:howyoudoin/utils/global_variable.dart';
 import 'package:howyoudoin/utils/utils.dart';
-import 'package:howyoudoin/widgets/glassMorphism.dart';
 import 'package:howyoudoin/widgets/loaders.dart';
 
 class LoginScreen extends StatefulWidget {

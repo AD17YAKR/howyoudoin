@@ -82,16 +82,12 @@ class _PostCardState extends State<PostCard> {
       ),
       child: Column(
         children: [
-          // HEADER SECTION OF THE POST
           Container(
             padding: EdgeInsets.symmetric(
               vertical: 4,
               horizontal: 16,
             ).copyWith(right: 0),
             child: GestureDetector(
-              /* onTap: () {
-                print(widget.snap['uid']);
-              }, */
               onTap: () {
                 Get.to(() => ProfileScreen(
                       uid: widget.snap['uid'],

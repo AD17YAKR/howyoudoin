@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/* import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,32 +33,34 @@ class _UserScreensState extends State<UserScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: green,
-            ),
-            onPressed: () {
-              Get.back();
-            },
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: green,
           ),
-          title: Text(
-            "Trackers",
-            style: TextStyle(
-              color: green,
-            ),
-          ),
-          centerTitle: true,
+          onPressed: () {
+            Get.back();
+          },
         ),
-        body: ListView(
-          children: [ProfileCard()],
-        ));
+        title: Text(
+          "Trackers",
+          style: TextStyle(
+            color: green,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: ListView(
+        children: [ProfileCard()],
+      ),
+    );
   }
 
   Widget ProfileCard() {
     return ListTile();
   }
 }
+ */

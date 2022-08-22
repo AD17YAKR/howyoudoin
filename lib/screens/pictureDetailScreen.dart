@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,9 +10,7 @@ import 'package:howyoudoin/screens/profileScreen.dart';
 import 'package:howyoudoin/utils/colors.dart';
 import 'package:howyoudoin/utils/global_variable.dart';
 import 'package:howyoudoin/utils/utils.dart';
-import 'package:howyoudoin/widgets/commentCard.dart';
 import 'package:howyoudoin/widgets/likeAnimation.dart';
-import 'package:howyoudoin/widgets/loaders.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 

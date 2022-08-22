@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,7 +17,7 @@ class FireStoreMethods {
     try {
       String photoUrl =
           await StorageMethods().uploadImageToStorage('posts', file, true);
-      String postId =   Uuid().v1(); // creates unique id based on time
+      String postId = Uuid().v1(); // creates unique id based on time
       Post post = Post(
         description: description,
         uid: uid,
@@ -62,7 +64,7 @@ class FireStoreMethods {
     try {
       if (text.isNotEmpty) {
         // if the likes list contains the user uid, we need to remove it
-        String commentId =   Uuid().v1();
+        String commentId = Uuid().v1();
         _firestore
             .collection('posts')
             .doc(postId)
@@ -98,15 +100,25 @@ class FireStoreMethods {
     return res;
   }
 
-  Future<void> followUser(
-    String uid,
-    String followId
-  ) async {
+  Future<String> getFollowers(String postId) async {
+    List<String> followers = [];
+    String res = "";
     try {
-      DocumentSnapshot snap = await _firestore.collection('users').doc(uid).get();
+      await _firestore.collection('posts').doc(postId).delete();
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
+  Future<void> followUser(String uid, String followId) async {
+    try {
+      DocumentSnapshot snap =
+          await _firestore.collection('users').doc(uid).get();
       List following = (snap.data()! as dynamic)['following'];
 
-      if(following.contains(followId)) {
+      if (following.contains(followId)) {
         await _firestore.collection('users').doc(followId).update({
           'followers': FieldValue.arrayRemove([uid])
         });
@@ -123,8 +135,7 @@ class FireStoreMethods {
           'following': FieldValue.arrayUnion([followId])
         });
       }
-
-    } catch(e) {
+    } catch (e) {
       print(e.toString());
     }
   }

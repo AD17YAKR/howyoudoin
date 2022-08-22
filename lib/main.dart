@@ -12,11 +12,11 @@ import 'package:howyoudoin/utils/colors.dart';
 import 'package:howyoudoin/widgets/loaders.dart';
 import 'package:provider/provider.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     await Firebase.initializeApp(
+      
       options: FirebaseOptions(
           apiKey: "AIzaSyDq6raC0VKUiTwAVFN2uKwkrBD-1EgP9s0",
           authDomain: "howyoudoin-b14d0.firebaseapp.com",

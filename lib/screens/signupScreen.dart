@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-import 'package:cropperx/cropperx.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -94,9 +94,8 @@ class _SignupScreenState extends State<SignupScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Flexible(
-              child: Container(),
-              flex: 2,
+            Container(
+              height: 75,
             ),
             FittedBox(
               child: Text(
@@ -109,7 +108,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
             SizedBox(
-              height: 16,
+              height: 20,
             ),
             Stack(
               children: [
@@ -132,18 +131,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: selectImage,
                     icon: Icon(
                       Icons.add_a_photo,
-                      color: textColor,
+                      color: Colors.blueGrey.withOpacity(.8),
                     ),
                   ),
                 )
               ],
             ),
             SizedBox(
-              height: 24,
+              height: 26,
             ),
-            /* 
-            Column(
-              children: [ */
             SizedBox(
               height: 50,
               child: TextFormField(
@@ -266,10 +262,8 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
             SizedBox(
-              height: 24,
+              height: 12,
             ),
-            /*  ],
-            ), */
             ElevatedButton(
               onPressed: signUpUser,
               child: !_isLoading
@@ -286,11 +280,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   )),
             ),
             SizedBox(
-              height: 12,
-            ),
-            Flexible(
-              child: Container(),
-              flex: 2,
+              height: 36,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,6 @@
 {
-    "name": "howyoudoin",
-    "short_name": "howyoudoin",
+    "name": "how_you_doin",
+    "short_name": "how_you_doin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

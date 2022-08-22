@@ -17,6 +17,8 @@ import 'package:howyoudoin/utils/utils.dart';
 import 'package:howyoudoin/widgets/followButton.dart';
 import 'package:howyoudoin/widgets/loaders.dart';
 
+import 'followersScreen.dart';
+
 class ProfileScreen extends StatefulWidget {
   final String uid;
   final bool isNavBar;
@@ -38,9 +40,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   int following = 0;
   bool isFollowing = false;
   bool isLoading = false;
-  Uint8List? _image;
+  // Uint8List? _image;
   TextEditingController _bioController = TextEditingController();
-
   bool isSelf = false;
   @override
   void initState() {
@@ -344,13 +345,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 children: [
                                   buildStatRow(postLen, "Events"),
                                   GestureDetector(
-                                      onTap: () {},
-                                      child:
-                                          buildStatRow(followers, "Followers")),
+                                    onTap: () {
+                                      // Get.to(FollowersPage());
+                                    },
+                                    child: buildStatRow(followers, "Followers"),
+                                  ),
                                   GestureDetector(
-                                      onTap: () {},
-                                      child:
-                                          buildStatRow(following, "Following")),
+                                    onTap: () {},
+                                    child: buildStatRow(following, "Following"),
+                                  ),
                                 ],
                               ),
                             ),
@@ -371,7 +374,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         .where('uid', isEqualTo: widget.uid)
                         .get(),
                     builder: (context, snapshot) {
-                      
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Center(
                           child: ScreenLoader(),
